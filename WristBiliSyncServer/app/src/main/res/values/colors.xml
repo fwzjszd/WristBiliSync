@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Dark 色板（Google 官方 Material Design） -->
+    <color name="primary">#D0BCFF</color>
+    <color name="on_primary">#381E72</color>
+    <color name="primary_container">#4F378B</color>
+    <color name="on_primary_container">#EADDFF</color>
+    <color name="secondary">#CCC2DC</color>
+    <color name="on_secondary">#332D41</color>
+    <color name="secondary_container">#4A4458</color>
+    <color name="on_secondary_container">#E8DEF8</color>
+    <color name="background">#141218</color>
+    <color name="on_background">#E6E0E9</color>
+    <color name="surface">#1C1B1F</color>
+    <color name="surface_variant">#49454F</color>
+    <color name="on_surface">#E6E0E9</color>
+    <color name="on_surface_variant">#CAC4D0</color>
+    <color name="surface_container">#211F26</color>
+    <color name="surface_container_high">#2B2930</color>
+    <color name="outline">#938F99</color>
+    <color name="error">#F2B8B5</color>
+    <color name="on_error">#601410</color>
+    <color name="error_container">#8C1D18</color>
+    <color name="on_error_container">#F9DEDC</color>
+
+    <!-- 语义色 -->
+    <color name="ok">#4CD964</color>
+    <color name="warn">#FFCC00</color>
+    <color name="err">#F2B8B5</color>
+    <color name="text_sub">#CAC4D0</color>
+</resources>

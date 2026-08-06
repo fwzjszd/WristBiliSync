@@ -1,0 +1,31 @@
+# ===== 签名与密钥（不公开）=====
+*.jks
+*.keystore
+*.pem
+sign/
+
+# ===== 构建产物 =====
+build/
+.gradle/
+WristBiliSyncServer/.gradle/
+WristBiliSyncServer/build/
+WristBiliSyncServer/app/build/
+app/build/
+
+# ===== 本地配置 =====
+local.properties
+.idea/
+*.iml
+captures/
+
+# ===== 产物包（RPK/APK）=====
+*.rpk
+*.apk
+
+# ===== 第三方原包与解包目录 =====
+test/
+build/rpk_dump/
+build/rpk_src*/
+
+# ===== 日志 =====
+*.log
