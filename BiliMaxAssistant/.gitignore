@@ -1,0 +1,19 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+.kotlin/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# 签名证书与密钥（严禁入库）
+keystore/
+*.p12
+*.jks
+*.keystore
+keystore.properties

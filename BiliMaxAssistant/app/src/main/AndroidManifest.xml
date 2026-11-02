@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- 服务器常驻期间持有 PARTIAL_WAKE_LOCK：进程持有唤醒锁时系统/厂商冻结器不会冻结它，
+         否则手机锁屏或切到其它应用后进程被 cgroup freezer 冻结，6732 端口只排队不响应 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 申请电池优化白名单（后台不受限制），降低被厂商省电策略冻结/查杀的概率 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="BiliMax 助手"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:enableOnBackInvokedCallback="true"
+        android:theme="@style/Theme.BiliMaxCompanion">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="BiliMax 助手"
+            android:theme="@style/Theme.BiliMaxCompanion">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          转码服务器前台保活服务。
+          APK 经 Xiaomi Wearable SDK（XMS）消息通道运行标准 SimpleFetch 协议，
+          手表请求由手机侧代发并回环访问本机 HTTP 转码服务器（http://127.0.0.1:6732）。
+          前台服务类型使用 specialUse（Android 14+ 要求），并声明用途。
+        -->
+        <service
+            android:name=".sync.SyncService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="守护本机 HTTP 转码服务器，供手表端经 SimpleFetch 桥接发起视频转码任务" />
+        </service>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>
